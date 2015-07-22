@@ -5,7 +5,7 @@ socketApp.controller('ChatController', ['$http', '$log', '$scope', function($htt
 
   $scope.predicate = '-id';
   $scope.reverse = false;
-  $scope.baseUrl = 'http://localhost:1337';
+  $scope.baseUrl = window.location.origin;
   $scope.chatList = [];
   $scope.getAllchat = function() {
 
