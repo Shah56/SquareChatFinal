@@ -46,7 +46,7 @@ passport.use(new LocalStrategy({
 passport.use(new FacebookStrategy({
     clientID: "436918573176696",
     clientSecret: "acfc7bd6a5eb4eecbd684ce4bd249a13",
-    callbackURL: "http://squarrrrrechat.herokuapp.com/fbkreturn",
+    callbackURL: "http://"+window.location.host+"/fbkreturn",
     enableProof: false
   },
   function(accessToken, refreshToken, profile, done) {
