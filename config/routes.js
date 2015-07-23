@@ -36,9 +36,14 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+
+
   'get /login': {
        view: 'login'
   },
+
+  'get /user2': 'User2Controller.privateprofile',
+  'get /public': 'User2Controller.publicprofile',
 
   'post /login': 'AuthController.login',
 
