@@ -45,12 +45,23 @@ module.exports.routes = {
   'get /user2': 'User2Controller.privateprofile',
   'get /public': 'User2Controller.publicprofile',
 
-  'post /login': 'AuthController.facebook',
+  'post /login': 'AuthController.login',
+
 
   '/logout': 'AuthController.logout',
 
   'get /signup': {
     view: 'signup'
+  },
+
+  'get /facebook':{
+
+      controller:'AuthController',
+      action:'facebook'
+  },
+
+  '/fbkreturn':{
+      view: 'fbkreturn'
   }
   /***************************************************************************
   *                                                                          *

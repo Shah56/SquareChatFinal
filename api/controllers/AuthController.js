@@ -46,7 +46,7 @@ module.exports = {
           return;
         }
 
-        res.redirect('/');
+        res.redirect('/user');
         return;
       });
     })(req, res);
