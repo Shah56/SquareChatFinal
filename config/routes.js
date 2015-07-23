@@ -45,7 +45,7 @@ module.exports.routes = {
   'get /user2': 'User2Controller.privateprofile',
   'get /public': 'User2Controller.publicprofile',
 
-  'post /login': 'AuthController.login',
+  'post /login': 'AuthController.facebook',
 
   '/logout': 'AuthController.logout',
 

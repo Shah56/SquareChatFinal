@@ -1,5 +1,6 @@
 var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy,
+FacebookStrategy = require('passport-facebook').Strategy,
 bcrypt = require('bcrypt-nodejs');
 
 passport.serializeUser(function(user, done) {
@@ -42,3 +43,17 @@ passport.use(new LocalStrategy({
   }
 ));
 
+passport.use(new FacebookStrategy({
+    clientID: "436918573176696",
+    clientSecret: "acfc7bd6a5eb4eecbd684ce4bd249a13",
+    callbackURL: "http://localhost:1337/",
+    enableProof: false
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return done(err, user,{
+            message: 'Logged In Successfully'
+          });
+    });
+  }
+));
