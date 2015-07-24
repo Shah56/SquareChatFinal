@@ -54,11 +54,11 @@ module.exports.routes = {
     view: 'signup'
   },
 
-  'get /facebook':{
+  // 'get /facebook':{
 
-      controller:'AuthController',
-      action:'facebook'
-  },
+  //     controller:'AuthController',
+  //     action:'facebook'
+  // },
 
   '/fbkreturn':{
       view: 'fbkreturn'

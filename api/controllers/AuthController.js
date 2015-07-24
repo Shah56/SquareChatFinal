@@ -9,11 +9,11 @@ var passport = require('passport');
 
 module.exports = {
 
-    _config: {
-        actions: false,
-        shortcuts: false,
-        rest: false
-    },
+    // _config: {
+    //     actions: false,
+    //     shortcuts: false,
+    //     rest: false
+    // },
 
     login: function(req, res) {
 
