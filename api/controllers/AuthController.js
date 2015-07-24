@@ -42,7 +42,7 @@ module.exports = {
       req.logIn(user, function(err) {
         if (err) {
           console.log(err);
-          res.view('500');
+          // res.view('fbkreturn');
           return;
         }
 
