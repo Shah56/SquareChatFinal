@@ -46,7 +46,7 @@ module.exports = {
           return;
         }
 
-        res.redirect('/user');
+        res.redirect('/fbkreturn');
         return;
       });
     })(req, res);
