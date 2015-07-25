@@ -54,10 +54,10 @@ module.exports = {
   },
 
   'facebook/callback': function (req, res, next) {
-     passport.authenticate('facebook',
-        function (req, res) {
+     // passport.authenticate('facebook',
+     //    function (req, res) {
             res.redirect('/user2');
-        })(req, res, next);
+        // })(req, res, next);
   },
 
     logout: function(req, res) {
