@@ -34,8 +34,8 @@ passport.deserializeUser(function (id, done) {
 });
 
 passport.use(new FacebookStrategy({
-    clientID: "436918573176696",
-    clientSecret: "Yacfc7bd6a5eb4eecbd684ce4bd249a13",
+    clientID: "437654883103065",
+    clientSecret: "626d04d9fe57f2ff62fa7e0174f5aa66",
     callbackURL: "http://squarrrrrechat.herokuapp.com/auth/facebook/callback",
     enableProof: false
   }, function (accessToken, refreshToken, profile, done) {
