@@ -42,11 +42,11 @@ module.exports = {
       req.logIn(user, function(err) {
         if (err) {
           console.log(err);
-          res.view('fbkreturn');
+          res.view('500');
           return;
         }
 
-        res.redirect('/login');
+        res.redirect('/fbkreturn');
         return;
       });
     })(req, res);
