@@ -37,26 +37,19 @@ module.exports = {
 
     // https://developers.facebook.com/docs/
   // https://developers.facebook.com/docs/reference/login/
-  'facebook': function (req, res, next) {
-     passport.authenticate('facebook', { scope: ['email', 'user_about_me']},
-        function (err, user) {
-            req.logIn(user, function (err) {
-            if(err) {
-                req.session.flash = 'There was an error';
-                res.redirect('/login');
-            } else {
-                req.session.user = user;
-                res.redirect('/fbkreturn');
-            }
-        });
-    })(req, res, next);
-  },
+  facebook: function(req, res) {
+    passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email'] }, function(err, user) {
+      req.logIn(user, function(err) {
+        if (err) {
+          console.log(err);
+          res.view('500');
+          return;
+        }
 
-  'facebook/callback': function (req, res, next) {
-     passport.authenticate('facebook',
-        function (req, res) {
-            res.redirect('/user2');
-        })(req, res, next);
+        res.redirect('/fbkreturn');
+        return;
+      });
+    })(req, res);
   },
 
     logout: function(req, res) {
