@@ -42,8 +42,9 @@ module.exports = {
         function (err, user) {
             req.logIn(user, function (err) {
             if(err) {
+                console.log(err);
                 req.session.flash = 'There was an error';
-                res.redirect('/login');
+                res.view('500');
             } else {
                 req.session.user = user;
                 res.redirect('/fbkreturn');
