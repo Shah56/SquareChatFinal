@@ -53,9 +53,6 @@ passport.deserializeUser(function(uid, done) {
  * For more information on configuration, check out:
  * http://sailsjs.org/#documentation
  */
-module.exports.http = {
-
-  customMiddleware: function(app) {
 
     passport.use(new GitHubStrategy({
       clientID: "YOUR_CLIENT_ID",
@@ -81,9 +78,7 @@ module.exports.http = {
       callbackURL: 'http://localhost:1337/auth/twitter/callback'
     }, verifyHandler));
 
-    app.use(passport.initialize());
-    app.use(passport.session());
-  }
+  
 
   // Completely override Express middleware loading.
   // If you only want to override the bodyParser, cookieParser
@@ -162,7 +157,7 @@ module.exports.http = {
   //
   // Example override:
   // methodOverride: (function customMethodOverride (req, res, next) {})()
-};
+
 
 
 /**
