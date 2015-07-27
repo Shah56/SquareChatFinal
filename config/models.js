@@ -18,11 +18,8 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 //   connection: 'sqldb',
-<<<<<<< HEAD
-connection: 'mysql',
-=======
+
  connection: 'mysql',
->>>>>>> 823018a140f10146868d1316fd215c16fdbca531
   /***************************************************************************
   *                                                                          *
   * How and whether Sails will attempt to automatically rebuild the          *
