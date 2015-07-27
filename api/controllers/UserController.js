@@ -40,6 +40,7 @@ module.exports = {
   'facebook/callback': function (req, res, next) {
      passport.authenticate('facebook',
         function (req, res) {
+            console.log("Callbackkk isssssss");
             res.redirect('/user/dashboard');
         })(req, res, next);
   }
