@@ -31,12 +31,12 @@ module.exports.policies = {
 
   'PostController': {
     '*': 'isAuthenticated'
-  },
+  }//,
 
-  'User2Controller': {
-    'privateprofile': 'isprofileviewable'
+  // 'User2Controller': {
+  //   'privateprofile': 'isprofileviewable'
 
-  }
+  // }
   /***************************************************************************
   *                                                                          *
   * Here's an example of mapping some policies to run before a controller    *
