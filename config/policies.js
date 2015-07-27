@@ -27,11 +27,11 @@ module.exports.policies = {
   ***************************************************************************/
 
 
-   '*': true,
+  //  '*': true,
 
-  'PostController': {
-    '*': 'isAuthenticated'
-  }//,
+  // 'PostController': {
+  //   '*': 'isAuthenticated'
+  // }//,
 
   // 'User2Controller': {
   //   'privateprofile': 'isprofileviewable'

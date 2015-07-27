@@ -5,7 +5,7 @@ bcrypt = require('bcrypt-nodejs');
 FacebookStrategy = require('passport-facebook').Strategy;
 
 function findById(id, fn) {
-  User2.findOne(id).done(function (err, user) {
+  User.findOne(id).done(function (err, user) {
     if (err) {
       return fn(null, null);
     } else {
@@ -15,7 +15,7 @@ function findById(id, fn) {
 }
 
 function findByFacebookId(id, fn) {
-  User2.findOne({
+  User.findOne({
     facebookId: id
   }).done(function (err, user) {
     if (err) {
@@ -39,7 +39,7 @@ passport.deserializeUser(function (id, done) {
 passport.use(new FacebookStrategy({
     clientID: "437654883103065",
     clientSecret: "626d04d9fe57f2ff62fa7e0174f5aa66",
-    callbackURL: "http://squarrrrrechat.herokuapp.com/user2/facebook/callback",
+    callbackURL: "http://squarrrrrechat.herokuapp.com/user/facebook/callback",
     enableProof: false
   }, function (accessToken, refreshToken, profile, done) {
 
@@ -47,7 +47,7 @@ passport.use(new FacebookStrategy({
 
       // Create a new User if it doesn't exist yet
       if (!user) {
-        User2.create({
+        User.create({
 
           facebookId: profile.id
 
@@ -77,15 +77,6 @@ passport.use(new FacebookStrategy({
 ));
 
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    User2.findOne({ id: id } , function (err, user) {
-        done(err, user);
-    });
-});
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
