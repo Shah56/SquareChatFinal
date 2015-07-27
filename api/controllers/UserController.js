@@ -28,7 +28,7 @@ module.exports = {
             if(err) {
                 req.session.flash = 'There was an error';
                 console.log(err);
-                res.redirect('user/login');
+                // res.redirect('user/login');
             } else {
                 req.session.user = user;
                 res.redirect('/user/dashboard');

@@ -9,26 +9,26 @@ var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
   attributes: {
-    email: {
-      type: 'email',
-      required: true,
-      unique: true
-    },
-    password: {
-      type: 'string',
-      minLength: 6,
-      required: true
-    },
+    // email: {
+    //   type: 'email',
+    //   required: true,
+    //   unique: true
+    // },
+    // password: {
+    //   type: 'string',
+    //   minLength: 6,
+    //   required: true
+    // },
     facebookId: {
       type: 'string',
       required: true,
       unique: true
-    },
-    toJSON: function() {
-      var obj = this.toObject();
-      delete obj.password;
-      return obj;
-    }
+    }//,
+    // toJSON: function() {
+    //   var obj = this.toObject();
+    //   delete obj.password;
+    //   return obj;
+    // }
   }//,
   // beforeCreate: function(user, cb, pr) {
   //   bcrypt.genSalt(10, function(err, salt) {
