@@ -24,6 +24,9 @@ module.exports = {
     res.redirect('/');
   },
 
+  dashboard: function(req, res){
+    res.view();
+  },
   // http://developer.github.com/v3/
   // http://developer.github.com/v3/oauth/#scopes
   github: function(req, res) {
@@ -52,7 +55,7 @@ module.exports = {
           return;
         }
 
-        res.redirect('/');
+        res.redirect('/user/dashboard');
         return;
       });
     })(req, res);
