@@ -19,9 +19,14 @@ module.exports = {
     //   minLength: 6,
     //   required: true
     // },
+    id: {
+      type: "string"
+
+
+    },
     facebookId: {
       type: 'string',
-      required: true,
+
       unique: true
     }//,
     // toJSON: function() {
