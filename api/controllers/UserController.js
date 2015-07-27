@@ -4,46 +4,91 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+/**
+ * AuthController.js
+ *
+ * @description ::
+ * @docs        :: http://sailsjs.org/#!documentation/controllers
+ */
+
 var passport = require('passport');
 
 module.exports = {
-  login: function (req, res) {
+
+  index: function(req, res) {
     res.view();
   },
 
-  dashboard: function (req, res) {
-    res.view();
+  logout: function(req, res) {
+    req.logout();
+    res.redirect('/');
   },
 
-  logout: function (req, res){
-    req.session.user = null;
-    req.session.flash = 'You have logged out';
-    res.redirect('user/login');
+  // http://developer.github.com/v3/
+  // http://developer.github.com/v3/oauth/#scopes
+  github: function(req, res) {
+    passport.authenticate('github', { failureRedirect: '/login' }, function(err, user) {
+      req.logIn(user, function(err) {
+        if (err) {
+          console.log(err);
+          res.view('500');
+          return;
+        }
+
+        res.redirect('/');
+        return;
+      });
+    })(req, res);
   },
 
-  'facebook': function (req, res, next) {
-     passport.authenticate('facebook', { scope: ['email', 'user_about_me']},
-        function (err, user) {
-            req.logIn(user, function (err) {
-            if(err) {
-                req.session.flash = 'There was an error';
-                console.log(err);
-                // res.redirect('user/login');
-            } else {
-                req.session.user = user;
-                res.redirect('/user/dashboard');
-            }
-        });
-    })(req, res, next);
+  // https://developers.facebook.com/docs/
+  // https://developers.facebook.com/docs/reference/login/
+  facebook: function(req, res) {
+    passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email'] }, function(err, user) {
+      req.logIn(user, function(err) {
+        if (err) {
+          console.log(err);
+          res.view('500');
+          return;
+        }
+
+        res.redirect('/');
+        return;
+      });
+    })(req, res);
   },
 
-  'facebook/callback': function (req, res, next) {
-     res.view('/user/dashboard');
-     // passport.authenticate('facebook',
-     //    function (req, res) {
-     //        console.log("Callbackkk isssssss");
-     //        res.redirect('/user/dashboard');
-     //    })(req, res, next);
+  // https://developers.google.com/
+  // https://developers.google.com/accounts/docs/OAuth2Login#scope-param
+  google: function(req, res) {
+    passport.authenticate('google', { failureRedirect: '/login', scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.profile.emails.read'] }, function(err, user) {
+      req.logIn(user, function(err) {
+        if (err) {
+          console.log(err);
+          res.view('500');
+          return;
+        }
+
+        res.redirect('/');
+        return;
+      });
+    })(req, res);
+  },
+
+  // https://apps.twitter.com/
+  // https://apps.twitter.com/app/new
+  twitter: function(req, res) {
+    passport.authenticate('twitter', { failureRedirect: '/login' }, function(err, user) {
+      req.logIn(user, function(err) {
+        if (err) {
+          console.log(err);
+          res.view('500');
+          return;
+        }
+
+        res.redirect('/');
+        return;
+      });
+    })(req, res);
   }
 };
-
